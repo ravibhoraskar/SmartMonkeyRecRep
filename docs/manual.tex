@@ -1,0 +1,47 @@
+\documentclass[10pt]{report}
+\usepackage{epsfig,endnotes}
+\usepackage{color}
+\usepackage{url}
+\usepackage[usenames,dvipsnames,svgnames,table]{xcolor}
+\usepackage{hyperref}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usepackage{pgfplotstable}
+\usepackage{xspace}
+\usepackage{comment}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{graphicx}
+\pgfplotsset{compat=1.4} 
+
+\input{macros}
+\begin{document}
+
+\title{SmartMonkey: A Record and Replay tool for Android
+\footnote{This version of the documentation is likely to be outdated. For the latest version, clone the repository, and build the manual found in the docs directory}
+}
+
+%for single author (just remove % characters)
+\author{
+} 
+
+
+\maketitle
+\tableofcontents
+\newpage
+
+\input{abstract.tex}
+\bibliographystyle{alpha}
+\bibliography{bib}
+
+
+
+%\theendnotes
+
+\end{document}
+
+
+
+
+
+
