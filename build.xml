@@ -56,7 +56,7 @@
         <antcall target="build"/>
     </target>
     <target name="UiAutomatorViewer">
-        <java classname="com.android.uiautomator.UiAutomatorViewer" failonerror="true" fork="yes">
+        <java classname="com.smartmonkey.recrep.UiAutomatorViewer" failonerror="true" fork="yes">
         	<jvmarg value="-XstartOnFirstThread" />    
 		<classpath refid="SmartMonkeyRecRep.classpath"/>
         </java>
