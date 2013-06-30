@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="lib/chimpchat.jar"/>
+	<classpathentry kind="lib" path="lib/common.jar"/>
+	<classpathentry kind="lib" path="lib/ddmlib.jar"/>
+	<classpathentry kind="lib" path="lib/equinox.jar"/>
+	<classpathentry kind="lib" path="lib/guava-13.0.1.jar"/>
+	<classpathentry kind="lib" path="lib/guava-tools.jar"/>
+	<classpathentry kind="lib" path="lib/jface.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.core.commands_3.6.2.v20130123-162658.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.osgi_3.8.2.v20130124-134944.jar"/>
+	<classpathentry kind="lib" path="lib/org.eclipse.ui.workbench_3.104.0.v20130204-164612.jar"/>
+	<classpathentry kind="lib" path="lib/sdklib.jar"/>
+	<classpathentry kind="lib" path="lib/swt.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
