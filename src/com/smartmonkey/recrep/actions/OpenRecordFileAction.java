@@ -13,15 +13,15 @@ import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.widgets.FileDialog;
 
 import com.smartmonkey.recrep.OpenDialog;
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 import com.smartmonkey.recrep.chimpevent.ChimpEvent;
 
 public class OpenRecordFileAction extends Action {
 
-	UiAutomatorViewer mWindow;
+	SMonkeyViewer mWindow;
 
-	public OpenRecordFileAction(UiAutomatorViewer window) {
+	public OpenRecordFileAction(SMonkeyViewer window) {
 		super("&Open");
 		mWindow = window;
 	}
@@ -39,8 +39,8 @@ public class OpenRecordFileAction extends Action {
 		try {
 			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileToOpen));
 			List<ChimpEvent> x =  (List<ChimpEvent>) in.readObject();
-			UiAutomatorModel.getModel().clearLog();
-			UiAutomatorModel.getModel().getLog().addAll(x);
+			SMonkeyModel.getModel().clearLog();
+			SMonkeyModel.getModel().getLog().addAll(x);
 			mWindow.getChimpEventTableViewer().refresh();
 			in.close();
 			

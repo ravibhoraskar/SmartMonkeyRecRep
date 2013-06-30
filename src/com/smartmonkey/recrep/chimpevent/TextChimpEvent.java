@@ -2,8 +2,8 @@ package com.smartmonkey.recrep.chimpevent;
 
 import com.android.chimpchat.core.IChimpDevice;
 import com.android.chimpchat.core.TouchPressType;
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 
 public class TextChimpEvent extends ChimpEvent {
 

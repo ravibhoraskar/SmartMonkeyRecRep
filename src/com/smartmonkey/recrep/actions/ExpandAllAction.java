@@ -16,16 +16,16 @@
 
 package com.smartmonkey.recrep.actions;
 
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyViewer;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 public class ExpandAllAction extends Action {
 
-    UiAutomatorViewer mWindow;
+    SMonkeyViewer mWindow;
 
-    public ExpandAllAction(UiAutomatorViewer window) {
+    public ExpandAllAction(SMonkeyViewer window) {
         super("&Expand All");
         mWindow = window;
     }

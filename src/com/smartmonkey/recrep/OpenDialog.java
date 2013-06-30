@@ -154,8 +154,8 @@ public class OpenDialog extends Dialog {
     }
 
     private void loadDataFromModel() {
-        mScreenshotFile = UiAutomatorModel.getModel().getScreenshotFile();
-        mXmlDumpFile = UiAutomatorModel.getModel().getXmlDumpFile();
+        mScreenshotFile = SMonkeyModel.getModel().getScreenshotFile();
+        mXmlDumpFile = SMonkeyModel.getModel().getXmlDumpFile();
     }
 
     private void handleOpenScreenshotFile() {

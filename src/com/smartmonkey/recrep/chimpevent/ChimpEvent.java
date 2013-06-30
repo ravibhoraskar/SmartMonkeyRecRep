@@ -3,8 +3,8 @@ package com.smartmonkey.recrep.chimpevent;
 import java.io.Serializable;
 
 import com.android.chimpchat.core.IChimpDevice;
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 
 public abstract class ChimpEvent implements Serializable {
 	/**

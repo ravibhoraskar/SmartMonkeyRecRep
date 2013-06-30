@@ -45,13 +45,13 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class UiAutomatorModel {
+public class SMonkeyModel {
 
-	private static UiAutomatorModel inst = null;
+	private static SMonkeyModel inst = null;
 
 	private File mScreenshotFile, mXmlDumpFile;
 	private IChimpDevice chimp;
-	private UiAutomatorViewer mView;
+	private SMonkeyViewer mView;
 	private Image mScreenshot;
 	private BasicTreeNode mRootNode;
 	private BasicTreeNode mSelectedNode;
@@ -76,21 +76,21 @@ public class UiAutomatorModel {
 
 	private int y=0;
 
-	private UiAutomatorModel(UiAutomatorViewer view) {
+	private SMonkeyModel(SMonkeyViewer view) {
 		mView=view;
 		log=new ArrayList<ChimpEvent>();
 
 	}
 
-	public static UiAutomatorModel createInstance(UiAutomatorViewer view) {
+	public static SMonkeyModel createInstance(SMonkeyViewer view) {
 		if (inst != null) {
 			throw new IllegalStateException("instance already created!");
 		}
-		inst = new UiAutomatorModel(view);
+		inst = new SMonkeyModel(view);
 		return inst;
 	}
 
-	public static UiAutomatorModel getModel() {
+	public static SMonkeyModel getModel() {
 		if (inst == null) {
 			throw new IllegalStateException("instance not created yet!");
 		}
@@ -114,7 +114,7 @@ public class UiAutomatorModel {
 		this.chimp = device;
 	}
 
-	public UiAutomatorViewer getmView() {
+	public SMonkeyViewer getmView() {
 		return mView;
 	}
 

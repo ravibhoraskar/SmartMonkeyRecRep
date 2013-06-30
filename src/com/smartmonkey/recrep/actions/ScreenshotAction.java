@@ -20,8 +20,8 @@ import com.android.chimpchat.ChimpChat;
 
 import com.android.chimpchat.core.IChimpDevice;
 import com.smartmonkey.recrep.ProcUtils;
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 import com.smartmonkey.recrep.ProcUtils.ProcRunner;
 
 import org.eclipse.core.runtime.IProgressMonitor;
@@ -43,9 +43,9 @@ import java.util.List;
 
 public class ScreenshotAction extends Action {
 
-	UiAutomatorViewer mViewer;
+	SMonkeyViewer mViewer;
 
-	public ScreenshotAction(UiAutomatorViewer viewer) {
+	public ScreenshotAction(SMonkeyViewer viewer) {
 		super("&Device Screenshot");
 		mViewer = viewer;
 	}
@@ -226,7 +226,7 @@ public class ScreenshotAction extends Action {
 					}
 					
 					monitor.subTask("Getting Chimp...");
-					IChimpDevice device= UiAutomatorModel.getModel().getChimp();
+					IChimpDevice device= SMonkeyModel.getModel().getChimp();
 					if(device==null)
 					{
 						// get the Chimpchat device
@@ -261,10 +261,10 @@ public class ScreenshotAction extends Action {
 								.syncExec(new Runnable() {
 									@Override
 									public void run() {
-										UiAutomatorModel.getModel()
+										SMonkeyModel.getModel()
 												.loadScreenshotAndXmlDump(png,
 														xml);
-										UiAutomatorModel.getModel().setChimp(finaldevice);
+										SMonkeyModel.getModel().setChimp(finaldevice);
 									}
 								});
 					}

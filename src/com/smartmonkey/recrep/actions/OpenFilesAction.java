@@ -17,7 +17,7 @@
 package com.smartmonkey.recrep.actions;
 
 import com.smartmonkey.recrep.OpenDialog;
-import com.smartmonkey.recrep.UiAutomatorModel;
+import com.smartmonkey.recrep.SMonkeyModel;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.resource.ImageDescriptor;
@@ -41,7 +41,7 @@ public class OpenFilesAction extends Action {
     public void run() {
         OpenDialog d = new OpenDialog(mWindow.getShell());
         if (d.open() == OpenDialog.OK) {
-            UiAutomatorModel.getModel().loadScreenshotAndXmlDump(
+            SMonkeyModel.getModel().loadScreenshotAndXmlDump(
                     d.getScreenshotFile(), d.getXmlDumpFile());
         }
     }

@@ -5,8 +5,8 @@ import java.io.IOException;
 
 import com.google.common.io.Files;
 import com.smartmonkey.recrep.OpenDialog;
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;
@@ -28,7 +28,7 @@ public class SaveFilesAction extends Action {
 
 	@Override
 	public void run() {
-		UiAutomatorModel model = UiAutomatorModel.getModel();
+		SMonkeyModel model = SMonkeyModel.getModel();
 		String message = "Saved to /tmp/dump.xml and /tmp/screenshot.png";
 		try {
 			File xmlin = model.getXmlDumpFile();

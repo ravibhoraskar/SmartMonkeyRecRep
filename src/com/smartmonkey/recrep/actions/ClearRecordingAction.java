@@ -5,7 +5,7 @@ import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.resource.ImageDescriptor;
 
 import com.android.chimpchat.core.IChimpDevice;
-import com.smartmonkey.recrep.UiAutomatorModel;
+import com.smartmonkey.recrep.SMonkeyModel;
 import com.smartmonkey.recrep.chimpevent.ChimpEvent;
 
 public class ClearRecordingAction extends Action {
@@ -21,7 +21,7 @@ public class ClearRecordingAction extends Action {
 
 	@Override
 	public void run() {
-		UiAutomatorModel.getModel().clearLog();
+		SMonkeyModel.getModel().clearLog();
 		System.out.println("printing");
 	}
 

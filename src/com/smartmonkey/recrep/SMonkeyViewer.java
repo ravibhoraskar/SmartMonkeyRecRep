@@ -94,7 +94,7 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.swt.widgets.Tree;
 
-public class UiAutomatorViewer extends ApplicationWindow {
+public class SMonkeyViewer extends ApplicationWindow {
 
 	private static final int IMG_BORDER = 2;
 
@@ -127,9 +127,9 @@ public class UiAutomatorViewer extends ApplicationWindow {
 	/**
 	 * Create the application window.
 	 */
-	public UiAutomatorViewer() {
+	public SMonkeyViewer() {
 		super(null);
-		UiAutomatorModel.createInstance(this);
+		SMonkeyModel.createInstance(this);
 		createActions();
 		
 	}
@@ -153,10 +153,10 @@ public class UiAutomatorViewer extends ApplicationWindow {
 			public void mouseUp(MouseEvent e) {
 				if (e.button == 3) // Right Click
 				{
-					UiAutomatorModel.getModel().toggleExploreMode();
+					SMonkeyModel.getModel().toggleExploreMode();
 				} else if (e.button == 1) // Left Click
 				{
-					UiAutomatorModel.getModel().touch();
+					SMonkeyModel.getModel().touch();
 				}
 			}
 		});
@@ -166,7 +166,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 		mScreenshotCanvas.addPaintListener(new PaintListener() {
 			@Override
 			public void paintControl(PaintEvent e) {
-				Image image = UiAutomatorModel.getModel().getScreenshot();
+				Image image = SMonkeyModel.getModel().getScreenshot();
 				if (image != null) {
 					updateScreenshotTransformation();
 					// shifting the image here, so that there's a border around
@@ -185,13 +185,13 @@ public class UiAutomatorViewer extends ApplicationWindow {
 					// and line width of highlight rect to be scaled, causing to
 					// appear to be blurry
 					e.gc.setTransform(null);
-					if (UiAutomatorModel.getModel().shouldShowNafNodes()) {
+					if (SMonkeyModel.getModel().shouldShowNafNodes()) {
 						// highlight the "Not Accessibility Friendly" nodes
 						e.gc.setForeground(e.gc.getDevice().getSystemColor(
 								SWT.COLOR_YELLOW));
 						e.gc.setBackground(e.gc.getDevice().getSystemColor(
 								SWT.COLOR_YELLOW));
-						for (Rectangle r : UiAutomatorModel.getModel()
+						for (Rectangle r : SMonkeyModel.getModel()
 								.getNafNodes()) {
 							e.gc.setAlpha(50);
 							e.gc.fillRectangle(mDx + getScaledSize(r.x), mDy
@@ -208,12 +208,12 @@ public class UiAutomatorViewer extends ApplicationWindow {
 						}
 					}
 					// draw the mouseover rects
-					Rectangle rect = UiAutomatorModel.getModel()
+					Rectangle rect = SMonkeyModel.getModel()
 							.getCurrentDrawingRect();
 					if (rect != null) {
 						e.gc.setForeground(e.gc.getDevice().getSystemColor(
 								SWT.COLOR_RED));
-						if (UiAutomatorModel.getModel().isExploreMode()) {
+						if (SMonkeyModel.getModel().isExploreMode()) {
 							// when we highlight nodes dynamically on mouse
 							// move,
 							// use dashed borders
@@ -236,8 +236,8 @@ public class UiAutomatorViewer extends ApplicationWindow {
 		mScreenshotCanvas.addMouseMoveListener(new MouseMoveListener() {
 			@Override
 			public void mouseMove(MouseEvent e) {
-				if (UiAutomatorModel.getModel().isExploreMode()) {
-					UiAutomatorModel.getModel().updateSelectionForCoordinates(
+				if (SMonkeyModel.getModel().isExploreMode()) {
+					SMonkeyModel.getModel().updateSelectionForCoordinates(
 							getInverseScaledSize(e.x - mDx),
 							getInverseScaledSize(e.y - mDy));
 				}
@@ -257,7 +257,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 			}
 
 			public void run() {
-				UiAutomatorModel.getModel().pressButton(PhysicalButton.BACK);
+				SMonkeyModel.getModel().pressButton(PhysicalButton.BACK);
 			}
 		});
 		physicalButtonToolbarManager.add(new Action() {
@@ -268,7 +268,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 			}
 
 			public void run() {
-				UiAutomatorModel.getModel().pressButton(PhysicalButton.MENU);
+				SMonkeyModel.getModel().pressButton(PhysicalButton.MENU);
 			}
 		});
 		physicalButtonToolbarManager.add(new Action() {
@@ -279,7 +279,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 			}
 
 			public void run() {
-				UiAutomatorModel.getModel().pressButton(PhysicalButton.HOME);
+				SMonkeyModel.getModel().pressButton(PhysicalButton.HOME);
 			}
 		});
 		physicalButtonToolbarManager.add(new Action() {
@@ -290,7 +290,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 			}
 
 			public void run() {
-				UiAutomatorModel.getModel().noop();
+				SMonkeyModel.getModel().noop();
 			}
 		});
 		physicalButtonToolbarManager.add(mFBLoginAction);
@@ -304,7 +304,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 		mSendTextButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseUp(MouseEvent e) {
-				UiAutomatorModel.getModel().sendText(mText.getText());
+				SMonkeyModel.getModel().sendText(mText.getText());
 			}
 		});
 		textComposite.setLayout(new FillLayout());
@@ -380,7 +380,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 		chimpEventTableViewer.getTable().setLinesVisible(true);
 		chimpEventTableViewer.getTable().setHeaderVisible(true);
 		chimpEventTableViewer.setContentProvider(ArrayContentProvider.getInstance());
-		chimpEventTableViewer.setInput(UiAutomatorModel.getModel().getLog());
+		chimpEventTableViewer.setInput(SMonkeyModel.getModel().getLog());
 
 		middleSash.setWeights(new int[] { 1, 20 });
 
@@ -416,13 +416,13 @@ public class UiAutomatorViewer extends ApplicationWindow {
 					@Override
 					public void selectionChanged(SelectionChangedEvent event) {
 						if (event.getSelection().isEmpty()) {
-							UiAutomatorModel.getModel().setSelectedNode(null);
+							SMonkeyModel.getModel().setSelectedNode(null);
 						} else if (event.getSelection() instanceof IStructuredSelection) {
 							IStructuredSelection selection = (IStructuredSelection) event
 									.getSelection();
 							Object o = selection.toArray()[0];
 							if (o instanceof BasicTreeNode) {
-								UiAutomatorModel.getModel().setSelectedNode(
+								SMonkeyModel.getModel().setSelectedNode(
 										(BasicTreeNode) o);
 							}
 						}
@@ -518,7 +518,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 	 */
 	public static void main(String args[]) {
 		try {
-			UiAutomatorViewer window = new UiAutomatorViewer();
+			SMonkeyViewer window = new SMonkeyViewer();
 			window.setBlockOnOpen(true);
 			window.open();
 			window.getShell().setMaximized(true);
@@ -550,7 +550,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 		BasicTreeNode wrapper = new BasicTreeNode();
 		// putting another root node on top of existing root node
 		// because Tree seems to like to hide the root node
-		wrapper.addChild(UiAutomatorModel.getModel().getXmlRootNode());
+		wrapper.addChild(SMonkeyModel.getModel().getXmlRootNode());
 		mTreeViewer.setInput(wrapper);
 		mTreeViewer.getTree().setFocus();
 	}
@@ -576,7 +576,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 	public void loadAttributeTable() {
 		// udpate the lower right corner table to show the attributes of the
 		// node
-		mTableViewer.setInput(UiAutomatorModel.getModel().getSelectedNode()
+		mTableViewer.setInput(SMonkeyModel.getModel().getSelectedNode()
 				.getAttributesArray());
 	}
 
@@ -587,7 +587,7 @@ public class UiAutomatorViewer extends ApplicationWindow {
 
 	private void updateScreenshotTransformation() {
 		Rectangle canvas = mScreenshotCanvas.getBounds();
-		Rectangle image = UiAutomatorModel.getModel().getScreenshot()
+		Rectangle image = SMonkeyModel.getModel().getScreenshot()
 				.getBounds();
 		float scaleX = (canvas.width - 2 * IMG_BORDER - 1)
 				/ (float) image.width;

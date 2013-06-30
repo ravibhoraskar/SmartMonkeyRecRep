@@ -16,7 +16,7 @@
 
 package com.smartmonkey.recrep.actions;
 
-import com.smartmonkey.recrep.UiAutomatorModel;
+import com.smartmonkey.recrep.SMonkeyModel;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -26,7 +26,7 @@ public class ToggleAutoRefreshAction extends Action {
 
     public ToggleAutoRefreshAction() {
         super("&Toggle Auto Refresh", IAction.AS_CHECK_BOX);
-        setChecked(UiAutomatorModel.getModel().autoRefresh());
+        setChecked(SMonkeyModel.getModel().autoRefresh());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ToggleAutoRefreshAction extends Action {
 
     @Override
     public void run() {
-        UiAutomatorModel.getModel().toggleAutoRefresh();
-        setChecked(UiAutomatorModel.getModel().autoRefresh());
+        SMonkeyModel.getModel().toggleAutoRefresh();
+        setChecked(SMonkeyModel.getModel().autoRefresh());
     }
 }

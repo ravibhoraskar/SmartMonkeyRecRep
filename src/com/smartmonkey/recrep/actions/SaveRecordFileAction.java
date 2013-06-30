@@ -15,15 +15,15 @@ import org.eclipse.jface.window.ApplicationWindow;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.FileDialog;
 
-import com.smartmonkey.recrep.UiAutomatorModel;
-import com.smartmonkey.recrep.UiAutomatorViewer;
+import com.smartmonkey.recrep.SMonkeyModel;
+import com.smartmonkey.recrep.SMonkeyViewer;
 import com.smartmonkey.recrep.chimpevent.ChimpEvent;
 
 public class SaveRecordFileAction extends Action {
 
-    UiAutomatorViewer mWindow;
+    SMonkeyViewer mWindow;
 
-    public SaveRecordFileAction(UiAutomatorViewer window) {
+    public SaveRecordFileAction(SMonkeyViewer window) {
         super("&Save");
         mWindow = window;
     }
@@ -39,7 +39,7 @@ public class SaveRecordFileAction extends Action {
 		String fileToOpen = dialog.open();
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(fileToOpen));
-			out.writeObject(UiAutomatorModel.getModel().getLog());
+			out.writeObject(SMonkeyModel.getModel().getLog());
 			out.close();
 			
 		} catch (FileNotFoundException e) {

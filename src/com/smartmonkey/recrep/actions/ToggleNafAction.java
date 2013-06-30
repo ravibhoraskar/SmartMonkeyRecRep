@@ -16,7 +16,7 @@
 
 package com.smartmonkey.recrep.actions;
 
-import com.smartmonkey.recrep.UiAutomatorModel;
+import com.smartmonkey.recrep.SMonkeyModel;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.action.IAction;
@@ -26,7 +26,7 @@ public class ToggleNafAction extends Action {
 
     public ToggleNafAction() {
         super("&Toggle NAF Nodes", IAction.AS_CHECK_BOX);
-        setChecked(UiAutomatorModel.getModel().shouldShowNafNodes());
+        setChecked(SMonkeyModel.getModel().shouldShowNafNodes());
     }
 
     @Override
@@ -36,7 +36,7 @@ public class ToggleNafAction extends Action {
 
     @Override
     public void run() {
-        UiAutomatorModel.getModel().toggleShowNaf();
-        setChecked(UiAutomatorModel.getModel().shouldShowNafNodes());
+        SMonkeyModel.getModel().toggleShowNaf();
+        setChecked(SMonkeyModel.getModel().shouldShowNafNodes());
     }
 }
